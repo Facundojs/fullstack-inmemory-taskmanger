@@ -1,13 +1,18 @@
-declare const module: any;
+declare const module: {
+  hot?: {
+    dispose(callback: () => void): void;
+    accept(): void;
+  };
+};
 
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-const PORT = 5002;
+const PORT = process.env.PORT || 5002;
 
 async function bootstrap() {
-  const logger = new Logger('EntryPoint');
+  const logger = new Logger();
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe());

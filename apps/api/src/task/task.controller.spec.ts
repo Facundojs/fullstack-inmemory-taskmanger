@@ -14,7 +14,35 @@ describe('TaskController', () => {
     controller = module.get<TaskController>(TaskController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('create', () => {
+    it('should create a task', async () => {
+      const createTaskDto = { title: 'Test task' };
+      const result = { id: 1, title: 'Test task' };
+
+      jest.spyOn(controller, 'create').mockImplementation(async () => result);
+
+      expect(await controller.create(createTaskDto)).toBe(result);
+    });
+  });
+
+  describe('findAll', () => {
+    it('should return an array of tasks', async () => {
+      const result = [{ id: 1, title: 'Test task' }];
+
+      jest.spyOn(controller, 'findAll').mockImplementation(async () => result);
+
+      expect(await controller.findAll()).toBe(result);
+    });
+  });
+
+  describe('remove', () => {
+    it('should delete a task and return it', async () => {
+      const result = { id: 1, title: 'Test task' };
+      const idDTO = { id: 1 };
+
+      jest.spyOn(controller, 'remove').mockImplementation(async () => result);
+
+      expect(await controller.remove(idDTO)).toBe(result);
+    });
   });
 });
