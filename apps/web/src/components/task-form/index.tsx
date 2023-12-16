@@ -1,7 +1,11 @@
-import { useTasks } from '../hooks/use-tasks';
-import { FormEvent } from 'react';
+import './index.css';
+
+import { useTasks } from '../../hooks/use-tasks';
+import { FormEvent, useRef } from 'react';
 
 export const TaskForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
   const { createTask } = useTasks()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -14,14 +18,16 @@ export const TaskForm = () => {
     if (!title) return;
 
     await createTask({ title });
+    formRef.current?.reset();
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="form">
+      <form ref={formRef} onSubmit={handleSubmit} className="form">
         <input
           placeholder="Enter a task"
-          className="input"
+          className="task-input"
+          autoComplete='off'
           name="title"
           type="text"
           required

@@ -1,0 +1,62 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  background-image: url(https://i.ibb.co/HK4jNK4/dark-wood.jpg);
+}
+
+body {
+  box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(-50%, 0);
+  background: #e9e7d4;
+  border-radius: 20px;
+  position: absolute;
+  padding: 4em 4em;
+  width: 60%;
+  left: 50%;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.title {
+  font-family: "Lobster", cursive;
+  margin-bottom: 0.2em;
+  text-align: center;
+  color: #8a4d0f;
+  font-size: 3em;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.lines::before {
+  content: "Task List";
+  font-family: "Lobster", cursive;
+  text-decoration: underline;
+  margin-bottom: 0.2em;
+  font-style: italic;
+  text-align: center;
+  color: #8a4d0f;
+  font-size: 6rem;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+}

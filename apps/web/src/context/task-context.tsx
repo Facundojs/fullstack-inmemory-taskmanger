@@ -19,8 +19,8 @@ export const TaskContext = createContext<TaskContext>({
 });
 
 export const TaskProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState<ITask[] | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const loadTasks = async () => {
     setLoading(true);
@@ -34,21 +34,17 @@ export const TaskProvider: FC<{ children: ReactNode }> = ({ children }) => {
   }
 
   const createNewTask = async (task: ICreateTaskDTO) => {
-    setLoading(true);
     const createdTask = await createTask(task);
 
-    setTasks(p => (p || []).concat(createdTask));
-    setLoading(false);
+    setTasks(p => [createdTask].concat(p || []));
   };
 
   const removeTask = async (id: number) => {
-    setLoading(true);
     const deleted = await deleteTask(id);
 
     if (deleted)
       setTasks(p => (p || []).filter(t => t.id !== id));
 
-    setLoading(false);
   };
 
   useEffect(() => {

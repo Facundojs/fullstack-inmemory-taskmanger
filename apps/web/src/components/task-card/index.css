@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Merienda&display=swap');
+
+.task {
+  font-family: 'Caveat', cursive;
+  font-family: 'Merienda', cursive;
+  display: flex;
+  border-radius: 3px;
+  font-size: 2rem;
+  width: 100%;
+  padding: 8px;
+  justify-content: space-between;
+}
+
+.task-label {
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.remove-btn {
+  transition: all 0.3s ease-in-out;
+  background-color: transparent;
+  justify-self: end ;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border: none;
+  padding: 0;
+}
+
+.remove-btn:hover {
+  transform: scale(1.5);
+  color: #a72811;
+}

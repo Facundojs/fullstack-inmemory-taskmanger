@@ -8,7 +8,7 @@ class TaskInmemoryRepository implements TaskRepository {
   private nextId = 1;
 
   async list(): Promise<ITask[]> {
-    return this.tasks;
+    return this.tasks.sort((a, b) => b.id - a.id);
   }
 
   async create(task: ITask): Promise<ITask> {

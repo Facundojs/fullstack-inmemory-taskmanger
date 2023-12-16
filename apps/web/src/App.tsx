@@ -18,10 +18,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="title">Todo List</h1>
-      <TaskForm/>
-      <div className="tasks">
-        {TasksMemo}
+      <div className="lines">
+        {/* <h1 className="title">Todo List</h1> */}
+        <TaskForm/>
+        <div className="tasks">
+          {TasksMemo}
+        </div>
       </div>
     </div>
   );
